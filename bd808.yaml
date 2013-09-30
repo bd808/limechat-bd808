@@ -1,0 +1,73 @@
+# All colors must be in the form of '#rrggbb' or '#rgb'.
+# You cannot use color names.
+##  The solarized color scheme is by Ethan Schoonover
+##
+##  base03:  #002B36;
+##  base02:  #073642;
+##  base01:  #586E75;
+##  base00:  #657B83;
+##  base0:   #839496;
+##  base1:   #93A1A1;
+##  base2:   #EEE8D5;
+##  base3:   #FDF6E3;
+##  yellow:  #B58900;
+##  orange:  #CB4B16;
+##  red:     #D30102;
+##  magenta: #D33682;
+##  violet:  #6C71C4;
+##  blue:    #268BD2;
+##  cyan:    #2AA198;
+##  green:   #859900;
+
+log-view:
+  nickname-format: '<%n>'
+  scroller-highlight-color: '#D30102' #red
+
+input-text:                   #solarized-light
+  font-family: 'Dejavu Sans Mono'
+  font-size: 12.0
+  background-color: '#EEE8D5' #base3
+  color: '#657B83'            #base00
+
+member-list:                  #solarized-dark
+  font-family: 'Dejavu Sans Mono'
+  font-size: 10.0
+  background-color: '#002B36' #base03
+  color: '#839496'            #base0
+  operator:
+    color: '#B58900'          #yellow
+  selected:
+    color: '#CB4B16'          #orange
+    background:
+      # gradient
+      top-line-color: '#073642' #base02
+      bottom-line-color: '#073642'
+      top-color: '#073642'
+      bottom-color: '#073642'
+
+server-tree:                  #solarized-dark
+  font-family: 'Dejavu Sans Mono'
+  font-size: 10.0
+  background-color: '#002B36' #base03
+  highlight:
+    color: '#D30102'          #red
+  newtalk:
+    color: '#2AA198'          #cyan
+  unread:
+    color: '#859900'          #green
+  normal:
+    active:
+      color: '#839496'        #base0
+    inactive:
+      color: '#586E75'        #base01
+  selected:
+    active:
+      color: '#586E75'        #base01
+    inactive:
+      color: '#586E75'        #base01
+    background:
+      # gradient
+      top-line-color: '#EEE8D5' #base2
+      bottom-line-color: '#EEE8D5'
+      top-color: '#EEE8D5'
+      bottom-color: '#EEE8D5'

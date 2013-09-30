@@ -1,0 +1,185 @@
+html {
+  background-color:#FDF6E3; /*base3*/
+  color:#657B83; /*base00*/
+  font-family:10pt/1.1em "Dejavu Sans Mono" fixed;
+  /*font-size:9pt;*/
+  margin:0;
+  padding:0;
+  word-wrap:break-word;
+}
+html.console {
+  background-color:#002B36; /*base03*/
+  color:#839496; /*base0*/
+}
+
+body {
+  margin:0;
+  padding:0.5ex 1.5ex;
+}
+body.console {}
+body.normal {}
+
+hr { margin:0.5em 2em; }
+
+a {
+  color:inherit;
+}
+
+/* == Special spans == */
+.url {
+  word-break:break-all;
+}
+.address {
+  text-decoration:underline;
+  word-break:break-all;
+}
+
+/* == Layout == */
+/* === Global === */
+.line {
+  padding:2px 0;
+}
+.time {}
+.sender {
+  font-weight:bold;
+}
+.message {}
+
+/* === Normal === */
+body.normal .line {
+  margin:.5em 0;
+}
+body.normal .time,
+body.normal .sender {
+  display:block;
+  float:left;
+  padding:0 .5em 0 0;
+}
+body.normal .time {
+  width:3em;
+  white-space:no-break;
+}
+body.normal .sender {
+  text-align:right;
+  width:8em;
+  white-space:no-break;
+}
+body.normal .message {
+  display:block;
+  padding-left:12em; /* space for floats */
+}
+
+/* ==== /me messages ==== */
+body.normal .line[type=action] { font-style:italic; }
+body.normal .line[type=action] .time,
+body.normal .line[type=action] .sender,
+body.normal .line[type=action] .message {
+  display:inline;
+  width:auto;
+  padding:0 .5em 0 0;
+}
+body.normal .line[type=action] .sender {
+  font-weight:normal;
+}
+body.normal .line[type=action] .sender::before {
+  content:'• ';
+}
+
+/* ==== highlighted messages ==== */
+body.normal .line[highlight=true] {
+  background-color:#EEE8D5; /*base2*/
+  border-right:5px double #586E75; /*base01*/
+}
+
+/* ==== system events ==== */
+body.normal .event {
+  margin:0;
+}
+body.normal .event .time {
+  display:none;
+}
+body.normal .event .message {
+  padding-left:4em;
+}
+
+/* === Console === */
+body.console span {
+  margin-right:1ex;
+}
+
+/* === Custom Elements === */
+#topic {
+  background:#002B36; /*base03*/
+  color:#839496;      /*base0*/
+  margin:0;
+  min-height:1em;
+  opacity:.8;
+  overflow:hidden;
+  padding:.25em 0;
+  position:fixed;
+  top:0;
+  width:100%;
+}
+
+/* == Colors == */
+/* - solarized for normal
+ * - solarized dark for console
+ */
+
+.time  { color:#93A1A1; /*base1*/}
+.place { color:#586E75; /*base01*/}
+
+.sender[type=myself]                   { color:#586E75; /*base01*/}
+.sender[type=normal]                   { color:#657B83; /*base00*/ }
+.sender[type=normal][colornumber='0']  { color:#B58900; }
+.sender[type=normal][colornumber='1']  { color:#CB4B16; }
+.sender[type=normal][colornumber='2']  { color:#D30102; }
+.sender[type=normal][colornumber='3']  { color:#D33682; }
+.sender[type=normal][colornumber='4']  { color:#6C71C4; }
+.sender[type=normal][colornumber='5']  { color:#268BD2; }
+.sender[type=normal][colornumber='6']  { color:#2AA198; }
+.sender[type=normal][colornumber='7']  { color:#859900; }
+.sender[type=normal][colornumber='8']  { color:#B58900; }
+.sender[type=normal][colornumber='9']  { color:#CB4B16; }
+.sender[type=normal][colornumber='10'] { color:#D30102; }
+.sender[type=normal][colornumber='11'] { color:#D33682; }
+.sender[type=normal][colornumber='12'] { color:#6C71C4; }
+.sender[type=normal][colornumber='13'] { color:#268BD2; }
+.sender[type=normal][colornumber='14'] { color:#2AA198; }
+.sender[type=normal][colornumber='15'] { color:#859900; }
+
+.message[type=privmsg]          { color:#657B83; /*base00*/}
+.message[type=action]           { color:inherit; }
+.message[type=notice]           { color:#93A1A1; /*base1*/}
+.message[type=system]           { color:#93A1A1; }
+.message[type=error]            { color:#657B83; font-weight:bold; }
+.message[type=reply]            { color:#93A1A1; }
+.message[type=error_reply]      { color:#93A1A1; }
+.message[type=dcc_send_send]    { color:#93A1A1; }
+.message[type=dcc_send_receive] { color:#93A1A1; }
+.message[type=join]             { color:#93A1A1; }
+.message[type=part]             { color:#93A1A1; }
+.message[type=quit]             { color:#93A1A1; }
+.message[type=kick]             { color:#93A1A1; }
+.message[type=kill]             { color:#93A1A1; }
+.message[type=nick]             { color:#93A1A1; }
+.message[type=mode]             { color:#93A1A1; }
+.message[type=topic]            { color:#93A1A1; }
+.message[type=invite]           { color:#93A1A1; font-style:italic; }
+.message[type=wallops]          { color:#93A1A1; }
+.message[type=debug_send]       { color:#93A1A1; }
+.message[type=debug_receive]    { color:#93A1A1; }
+
+/* disable funky mirc colours */
+.effect[color-number] {
+  color:inherit;
+  background-color:inherit;
+  font-style:italic;
+}
+
+/* something I wanted to stand out */
+.highlight {
+  color:#ca773f;
+  font-weight:normal;
+}
+
