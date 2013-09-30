@@ -1,7 +1,9 @@
 load.language = 'coffee'
-load 'topic'
-load 'gerrit'
+
 load 'bugzilla'
+load 'gerrit'
+load 'topic'
+load 'znc'
 
 ###
 # load JS like this

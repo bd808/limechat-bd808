@@ -51,6 +51,7 @@ server-tree:                  #solarized-dark
   background-color: '#002B36' #base03
   highlight:
     color: '#D30102'          #red
+    font-weight: 'bold'
   newtalk:
     color: '#2AA198'          #cyan
   unread:
@@ -58,13 +59,16 @@ server-tree:                  #solarized-dark
   normal:
     active:
       color: '#839496'        #base0
+      font-style: 'normal'
     inactive:
       color: '#586E75'        #base01
+      font-style: 'italic'
   selected:
     active:
       color: '#586E75'        #base01
     inactive:
       color: '#586E75'        #base01
+      font-style: 'italic'
     background:
       # gradient
       top-line-color: '#EEE8D5' #base2
