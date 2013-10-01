@@ -20,8 +20,7 @@
 html {
   background-color:#FDF6E3; /*base3*/
   color:#657B83; /*base00*/
-  font-family:10pt/1.1em "Dejavu Sans Mono" fixed;
-  /*font-size:9pt;*/
+  font:9pt/1.1em "Dejavu Sans Mono", fixed;
   margin:0;
   padding:0;
   word-wrap:break-word;
@@ -29,6 +28,7 @@ html {
 html.console {
   background-color:#002B36; /*base03*/
   color:#839496; /*base0*/
+  font-size:8pt;
 }
 
 body {
@@ -55,49 +55,44 @@ a {
 
 /* == Layout == */
 /* === Global === */
-.line {
-  padding:2px 0;
-}
-.time { }
-.sender { }
-.message { }
+.line { padding:2px 0; }
 
 /* === Normal === */
 body.normal .line {
-  margin:.5em 0;
+  position:relative;
+  margin:.25em 0;
 }
 body.normal .time,
 body.normal .sender {
   display:block;
-  float:left;
-  padding:0 .5em 0 0;
 }
 body.normal .time {
-  width:3em;
+  font-size:smaller;
+  left:0;
+  position:absolute;
+  visibility:hidden;
   white-space:no-break;
 }
+body.normal .line:hover .time {
+  visibility:visible;
+}
 body.normal .sender {
+  float:left;
+  padding:0 .5em 0 0;
   text-align:right;
-  width:8em;
   white-space:no-break;
+  width:9em;
 }
 body.normal .message {
   display:block;
-  padding-left:12em; /* space for floats */
+  padding-left:10em; /* space for floats */
 }
 
 /* ==== /me messages ==== */
 body.normal .line[type=action] { font-style:italic; }
-body.normal .line[type=action] .time,
-body.normal .line[type=action] .sender,
-body.normal .line[type=action] .message {
-  display:inline;
-  font-weight:normal;
-  padding:0 .5em 0 0;
-  width:auto;
-}
-body.normal .line[type=action] .time {
-    font-style:normal;
+body.normal .line[type=action] .sender {
+    margin-left:8.5em;
+    width:auto;
 }
 body.normal .line[type=action] .sender::before {
   content:'• ';
@@ -111,12 +106,14 @@ body.normal .line[highlight=true] {
 }
 
 /* ==== system events ==== */
-.event {
+body.normal .event {
   margin:0;
   font-size:smaller;
 }
 body.normal .event .time {
-  display:none;
+  position:static;
+  float:left;
+  visibility:visible;
 }
 body.normal .event .message {
   padding-left:4em;
