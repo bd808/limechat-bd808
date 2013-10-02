@@ -7,11 +7,11 @@ bind 'reply', (line) ->
   if line.lastChild.innerHTML.match re
     doc = document
     body = document.body
-    topicDiv = doc.getElementById('topic')
+    topicDiv = doc.getElementById 'topic'
     if topicDiv == null
-      ctype = body.getAttribute('type')
+      ctype = body.getAttribute 'type'
       if ctype == 'channel' || ctype == 'talk'
-        topicDiv = doc.createElement('div')
+        topicDiv = doc.createElement 'div'
         topicDiv.id = 'topic'
-        body.appendChild(topicDiv)
+        body.appendChild topicDiv
     topicDiv.innerHTML= line.innerHTML.match(/opic: (.*)$/)[1]

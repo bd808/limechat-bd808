@@ -64,7 +64,7 @@
   this.load = function (src, callback) {
     if (load.language) src += '.' + load.language;
     var loader = src.match(/\.js$/) ? loadJS : loadCS;
-    loader('limescripts/lib/' + src, callback);
+    loader('lib/' + src, callback);
   };
 
   /*
@@ -118,8 +118,8 @@
   };
 
   // Override window.onerror so we actually get some error reporting
-  this.onerror = function (error) {
-    console.error('ERROR:', error);
+  this.onerror = function (error, url, line) {
+    console.error('ERROR ('+url+')['+line+']:', error);
   };
 
   // its all pretty much non-api private stuff from here
@@ -176,10 +176,15 @@
   // triggers an event
   function trigger (name, context, args) {
     // console.log(name) // <-- do this to discover events
-    var handlers = events[name];
+    var err, handlers = events[name];
+
     if (!handlers) return;
     for (var i = 0, l = handlers.length; i < l; i++) {
-      handlers[i].apply(context, args);
+      try {
+        handlers[i].apply(context, args);
+      } catch (err) {
+        console.error('Trigger[' + name + '][' + i + ']:' + err);
+      }
     }
   }
 
@@ -187,6 +192,7 @@
   // trigger events unless it's the top level element of a new message
   function processMessage (event) {
     var node = event.target;
+    if (!node) return;
     var parent = node.parentNode;
     var isLine = node.className.match(/line/);
     if (parent !== document.body || !isLine) return;
