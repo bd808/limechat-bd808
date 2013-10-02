@@ -67,31 +67,28 @@ body.normal .sender {
   display:block;
 }
 body.normal .time {
-  font-size:smaller;
+  font-size:7pt;
   left:0;
   position:absolute;
-  visibility:hidden;
   white-space:no-break;
-}
-body.normal .line:hover .time {
-  visibility:visible;
+  width:auto;
 }
 body.normal .sender {
   float:left;
   padding:0 .5em 0 0;
   text-align:right;
   white-space:no-break;
-  width:9em;
+  width:10em;
 }
 body.normal .message {
   display:block;
-  padding-left:10em; /* space for floats */
+  padding-left:11em; /* space for floats */
 }
 
 /* ==== /me messages ==== */
 body.normal .line[type=action] { font-style:italic; }
 body.normal .line[type=action] .sender {
-    margin-left:8.5em;
+    margin-left:9.5em;
     width:auto;
 }
 body.normal .line[type=action] .sender::before {
@@ -101,8 +98,8 @@ body.normal .line[type=action] .sender::before {
 /* ==== highlighted messages ==== */
 body.normal .line[highlight=true] {
   background-color:#EEE8D5; /*base2*/
-  border-left:5px double #586E75; /*base01*/
-  padding-left:5px;
+  border-right:5px double #586E75; /*base01*/
+  padding-right:5px;
 }
 
 /* ==== system events ==== */
@@ -117,6 +114,13 @@ body.normal .event .time {
 }
 body.normal .event .message {
   padding-left:4em;
+}
+
+body.normal .event[type=join],
+body.normal .event[type=nick],
+body.normal .event[type=part],
+body.normal .event[type=quit] {
+  display:none;
 }
 
 /* === Console === */
@@ -148,7 +152,7 @@ body.console .time { color:#586E75; /*base01*/ }
 
 .place { color:#586E75; /*base01*/ }
 
-.sender[type=myself]                   { color:#586E75; /*base01*/ }
+.sender[type=myself]                   { color:#586E75; /*base01*/ font-weight:bold; }
 .sender[type=normal]                   { color:#657B83; /*base00*/ }
 body.normal .sender[type=normal][colornumber='0']  { color:#B58900; }
 body.normal .sender[type=normal][colornumber='1']  { color:#CB4B16; }
