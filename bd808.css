@@ -128,6 +128,15 @@ body.normal .event[type=quit] {
   display:none;
 }
 
+/* === javascript log messages ==== */
+body.normal .js-console-log,
+body.normal .js-console-error {
+  font-size:smaller;
+}
+body.normal .js-console-error .message {
+  color:#CB4B16; /*orange*/
+}
+
 /* === Console === */
 body.console span {
   margin-right:1ex;
@@ -220,3 +229,4 @@ body.console .message           { color:#586E75; /*base01*/ }
   font-weight:normal;
 }
 
+/* vim:sw=2 ts=2 sts=2 et: */

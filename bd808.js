@@ -74,6 +74,7 @@
    * @param {Function} callback
    */
   this.loadJS = function (src, callback) {
+    // console.log('loading ' + src);
     var script = document.createElement('script');
     if (src.indexOf('?') === -1) src += '?';
     // web view caches like crazy
@@ -90,6 +91,7 @@
    * @param {Function} calback
    */
   this.loadCS = function (src, callback) {
+    // console.log('loading ' + src);
     CoffeeScript.load(src, callback);
   };
 
@@ -125,10 +127,19 @@
   // its all pretty much non-api private stuff from here
 
   function log (className) {
-    var msgs = [].slice.call(arguments, 1);
-    var node = document.createElement('div');
-    node.className = className;
-    node.innerHTML = '<span class="message">' + msgs.join('  ') + '</span>';
+    var msgs = [].slice.call(arguments, 1)
+      , node = document.createElement('div')
+      , now = new Date()
+      , dfmt = function (d) {
+          var h = d.getHours() + '', m = d.getMinutes() + '';
+          if (h.length == 1) h = '0' + h;
+          if (m.length == 1) m = '0' + m;
+          return h + ':' + m;
+      };
+    node.className = 'line ' + className;
+    node.innerHTML = '<span class="time">' + dfmt(now) + '</span>' +
+        '<span class="sender">&lt;js&gt;</span>' +
+        '<span class="message">' + msgs.join('  ') + '</span>';
     document.body.appendChild(node);
   }
 
@@ -191,6 +202,7 @@
   // the handler called whenever a dom node is inserted, ensures that we don't
   // trigger events unless it's the top level element of a new message
   function processMessage (event) {
+    if (!event) return;
     var node = event.target;
     if (!node) return;
     var parent = node.parentNode;
@@ -206,6 +218,7 @@
   // and the helpers file
   (function() {
     var scriptsLoaded = 0;
+    console.log('initializing javascript');
     loadJS('lib/vendor/coffee-script.js', finish);
     loadJS('lib/vendor/jquery.min.js', finish);
 
@@ -215,6 +228,7 @@
       load('helpers.coffee', function() {
         load('main.coffee');
       });
+      console.log('javascript initialized');
     }
   })();
 

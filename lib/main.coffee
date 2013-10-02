@@ -5,6 +5,8 @@ load 'gerrit'
 load 'topic'
 load 'znc'
 
+console.log 'loaded main.coffee'
+
 ###
 # load JS like this
 load 'whatever.js'
