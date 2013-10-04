@@ -1,11 +1,10 @@
 load.language = 'coffee'
 
+#load 'helpers'
 load 'bugzilla'
 load 'gerrit'
 load 'topic'
 load 'znc'
-
-console.log 'loaded main.coffee'
 
 ###
 # load JS like this

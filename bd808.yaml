@@ -21,7 +21,7 @@
 
 log-view:
   nickname-format: '%n'
-  scroller-highlight-color: '#D30102' #red
+  scroller-highlight-color: '#D33682' #magenta
 
 input-text:                   #solarized-light
   font-family: 'Dejavu Sans Mono'

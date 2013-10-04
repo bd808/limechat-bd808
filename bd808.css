@@ -36,10 +36,15 @@ body {
   padding:1em .5em;
 }
 body.normal {
-  padding-top:1.25em;
+  padding-top:2em;
 }
 
-hr { margin:0.5em 2em; }
+hr {
+  background:#2AA198; /*cyan*/
+  color:#2AA198; /*cyan*/
+  height:2px;
+  margin:0.5em 2em;
+}
 
 a {
   color:inherit;
@@ -112,11 +117,6 @@ body.normal .event {
   margin:0;
   font-size:smaller;
 }
-body.normal .event .time {
-  position:static;
-  float:left;
-  visibility:visible;
-}
 body.normal .event .message {
   padding-left:4em;
 }
@@ -127,13 +127,10 @@ body.normal .event[type=part],
 body.normal .event[type=quit] {
   display:none;
 }
-
-/* === javascript log messages ==== */
-body.normal .js-console-log,
-body.normal .js-console-error {
-  font-size:smaller;
+body.normal .event[type=js-log] * {
+  color:#B58900; /*yellow*/
 }
-body.normal .js-console-error .message {
+body.normal .event[type=js-error] * {
   color:#CB4B16; /*orange*/
 }
 
@@ -144,21 +141,24 @@ body.console span {
 
 /* === Custom Elements === */
 #topic {
-  background:#002B36; /*base03*/
-  color:#839496;      /*base0*/
+  background:#93A1A1; /*base1*/
+  color:#586E75;      /*base01*/
   height:1em;
   left:0;
   margin:0;
   min-height:1.1em;
+  opacity:.8;
   overflow:hidden;
-  padding:.25em 1em;
+  padding:.25em 2em;
   position:fixed;
   top:0;
-  width:100%;
+  visibility:hidden;
   z-index:100000;
 }
 #topic:hover {
+  color:#EEE8D5; /*base2*/
   height:auto;
+  opacity:1;
 }
 
 /* == Colors == */
@@ -225,7 +225,7 @@ body.console .message           { color:#586E75; /*base01*/ }
 
 /* something I wanted to stand out */
 .highlight {
-  color:#ca773f;
+  color:#CB4B16; /*orange*/
   font-weight:normal;
 }
 

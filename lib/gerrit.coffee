@@ -1,7 +1,9 @@
 ##
 # Links gerrit:<id> to gerrit
+
+RE_GERRIT = /\b(?:gerrit):(\d+)\b/ig
+HTML_GERRIT = '<a href="https://gerrit.wikimedia.org/r/#/c/$1">$&</a>'
+
 bind 'line', (line) ->
-  RE = /\b(?:gerrit):(\d+)\b/ig
-  if RE.test line.innerHTML
-    replacement = '<a href="https://gerrit.wikimedia.org/r/#/c/$1">$&</a>'
-    line.innerHTML = line.innerHTML.replace RE, replacement
+  if RE_GERRIT.test line.innerHTML
+    line.innerHTML = line.innerHTML.replace RE_GERRIT, HTML_GERRIT

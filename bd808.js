@@ -81,7 +81,7 @@
     script.src = src + '&bust=' + Date.now();
     script.type = 'text/javascript';
     if (callback) script.onload = callback;
-    document.body.appendChild(script);
+    document.head.appendChild(script);
   };
 
   /*
@@ -106,7 +106,7 @@
    */
   this.console.log = function () {
     var args = [].slice.call(arguments, 0);
-    args.unshift('js-console-log');
+    args.unshift('log');
     log.apply(null, args);
   };
 
@@ -115,7 +115,7 @@
    */
   this.console.error = function () {
     var args = [].slice.call(arguments, 0);
-    args.unshift('js-console-error');
+    args.unshift('error');
     log.apply(null, args);
   };
 
@@ -126,7 +126,7 @@
 
   // its all pretty much non-api private stuff from here
 
-  function log (className) {
+  function log (type) {
     var msgs = [].slice.call(arguments, 1)
       , node = document.createElement('div')
       , now = new Date()
@@ -136,9 +136,10 @@
           if (m.length == 1) m = '0' + m;
           return h + ':' + m;
       };
-    node.className = 'line ' + className;
+    node.className = 'line event js';
+    node.setAttribute('type', 'js-' + type);
     node.innerHTML = '<span class="time">' + dfmt(now) + '</span>' +
-        '<span class="sender">&lt;js&gt;</span>' +
+        '<span class="sender">&lt;' + type + '&gt;</span>' +
         '<span class="message">' + msgs.join('  ') + '</span>';
     document.body.appendChild(node);
   }
@@ -166,7 +167,6 @@
   }
 
   function triggerElementEvents (el, line) {
-
     // link event
     if (el.tagName === 'A') {
       trigger('link', el, [el.getAttribute('href'), line]);
@@ -199,14 +199,15 @@
     }
   }
 
+
   // the handler called whenever a dom node is inserted, ensures that we don't
   // trigger events unless it's the top level element of a new message
   function processMessage (event) {
-    if (!event) return;
+    if (typeof event == 'undefined') return;
     var node = event.target;
-    if (!node) return;
+    if (typeof node == 'undefined') return;
     var parent = node.parentNode;
-    var isLine = node.className.match(/line/);
+    var isLine = (node.className)? node.className.match(/line/): false;
     if (parent !== document.body || !isLine) return;
     triggerEvents(node);
   }
@@ -218,17 +219,15 @@
   // and the helpers file
   (function() {
     var scriptsLoaded = 0;
-    console.log('initializing javascript');
+    // console.log('initializing javascript');
     loadJS('lib/vendor/coffee-script.js', finish);
     loadJS('lib/vendor/jquery.min.js', finish);
 
     function finish() {
       scriptsLoaded++;
       if (scriptsLoaded !== 2) return;
-      load('helpers.coffee', function() {
-        load('main.coffee');
-      });
-      console.log('javascript initialized');
+      load('main.coffee');
+      // console.log('javascript initialized');
     }
   })();
 
