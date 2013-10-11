@@ -52,5 +52,19 @@ Product includes components borrowed or derived from other open source projects:
   Copyright (c) Tomohiro MITSUMUNE
 
 - https://github.com/HenrikJoreteg/emoji-images.js/
-  Coyright (c) 2013 Henrik Joreteg
+  Copyright (c) 2013 Henrik Joreteg
   MIT License
+
+- https://github.com/phaedryx/limechat-solarized-theme
+  Copyright (c) 2013 Tad Thorley
+  
+- https://github.com/canadaduane/limescripts/blob/master/lib/bip_backlog.coffee
+  Copyright (c) Stanley Stuart
+  
+- CoffeeScript Compiler v1.6.3
+  Copyright 2011, Jeremy Ashkenas
+  Released under the MIT License
+  
+- jQuery v2.0.3
+  (c) 2005, 2013 jQuery Foundation, Inc.
+  jquery.org/license
